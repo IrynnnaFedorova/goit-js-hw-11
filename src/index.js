@@ -1,15 +1,15 @@
-import './sass/main.scss';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import './styles.css';
-import './gallery.css';
-import './load-more.css';
+import './css/styles.css';
+import './css/search-field.css';
+import './css/gallery.css';
+import './css/load-more.css';
+import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
-import GalleryApi from '../src/gallery-img.js';
-import '../src/header.js';
-import LoadMoreBtn from'../src/style.css';
-import galleryCardTpl from '../src/gallery-card.hbs';
-import axios from 'axios';
+import GalleryApi from '../src/js/fetch-gallery';
+import '../src/js/header.js';
+import LoadMoreBtn from'../src/js/load-more-button';
+import galleryCardTpl from '../src/templates/gallery-card.hbs';
 
 const refs = {
     form: document.querySelector('form#search-form'),
