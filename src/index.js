@@ -1,13 +1,13 @@
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import './css/styles.css';
-import './css/search-field.css';
-import './css/gallery.css';
-import './css/load-more.css';
+import '../src/css/style.css';
+import '../src/css/search-field.css';
+import '../src/css/gallery.css';
+import '../src/css/load-more-button.css';
 import axios from 'axios';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
-import GalleryApi from '../src/js/fetch-gallery';
-import '../src/js/header.js';
+import GalleryApi from '../src/js/gallery-img';
+import '../src/js/headers.js';
 import LoadMoreBtn from'../src/js/load-more-button';
 import galleryCardTpl from '../src/templates/gallery-card.hbs';
 
