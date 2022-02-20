@@ -1,25 +1,25 @@
-import 'simplelightbox/dist/simple-lightbox.min.css';
 import '../src/css/style.css';
 import '../src/css/search-field.css';
 import '../src/css/gallery.css';
-import '../src/css/load-more-button.css';
-import axios from 'axios';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import '../src/css/load-button.css';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+import '../src/js/infinity-scrol';
 import SimpleLightbox from 'simplelightbox';
 import GalleryApi from '../src/js/gallery-img';
-import '../src/js/headers.js';
-import LoadMoreBtn from'../src/js/load-more-button';
-import galleryCardTpl from '../src/templates/gallery-card.hbs';
+import LoadBtn from'../src/js/load-button';
+import galleryCard from '../src/templates/gallery-card.hbs';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
     form: document.querySelector('form#search-form'),
     inputField: document.querySelector('input.search-form__input'),
     searchButton: document.querySelector('button.search-form__button'),
     gallery: document.querySelector('div.gallery'),
-    loadMoreButton: document.querySelector('button.load-more'),
+    loadMoreButton: document.querySelector('button.load'),
+
 };
 
-const loadMoreBtn = new LoadMoreBtn({
+const loadBtn = new LoadBtn({
     selector: '[data-action="load-more"]',
     hidden: true,
 });
@@ -27,7 +27,7 @@ const loadMoreBtn = new LoadMoreBtn({
 const galleryApi = new GalleryApi();
 
 refs.form.addEventListener('submit', onSearch);
-loadMoreBtn.refs.button.addEventListener('click', fetchGallery);
+loadBtn.refs.button.addEventListener('click', fetchGallery);
 
 function onSearch(event) {
     event.preventDefault();
@@ -39,18 +39,18 @@ function onSearch(event) {
         return Notify.info("Input your search query.");
     }
 
-    loadMoreBtn.show();
+    loadBtn.show();
     galleryApi.resetPage();
     clearGallery();
     fetchGallery();
 }
 
 function fetchGallery() {
-    loadMoreBtn.disable();
+    loadBtn.disable();
     galleryApi.fetchGallery()
         .then(imagesArray => {
             galleryDisplay(imagesArray);
-            loadMoreBtn.enable();
+            loadBtn.enable();
             smoothScroll();
         })
         .catch(noSuchResult);
@@ -70,19 +70,19 @@ function galleryDisplay(images) {
     // If statement for situation when we got more than 40 hits, but less than 500
     if (imagesReturned < CARDS_PER_PAGE && imagesHits > CARDS_PER_PAGE) {
         Notify.info("We're sorry, but you've reached the end of search results.");
-        loadMoreBtn.hide();
+        loadBtn.hide();
     }
 
     // If statement for situation when we got more than 500 hits and reached maximum of them displayed
     if (cardsDisplayed + CARDS_PER_PAGE > 500) {
         Notify.info("We're sorry, but you've reached the end of search results.");
-        loadMoreBtn.hide();
+        loadBtn.hide();
         images.hits = images.hits.slice(0, 20);
     }
 
     // If statement for situation when we got 40 hits or less
     if (imagesHits <= CARDS_PER_PAGE) {
-        loadMoreBtn.hide();
+        loadBtn.hide();
     }
 
     // If statement for notification with amount of hits
@@ -93,7 +93,7 @@ function galleryDisplay(images) {
 
     statements();   
     
-    refs.gallery.insertAdjacentHTML('beforeend', galleryCardTpl(images));
+    refs.gallery.insertAdjacentHTML('beforeend', galleryCard(images));
 
     spaceBetweenNumbers();
     simpleLightbox();
@@ -108,7 +108,7 @@ function clearGallery() {
 function clearAll() {
     cardsCount = 0;
     refs.gallery.innerHTML = ' ';
-    loadMoreBtn.hide();
+    loadBtn.hide();
 };
 
 function noSuchResult() {
@@ -167,3 +167,4 @@ function smoothScroll() {
         });
     }
 }
+

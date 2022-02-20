@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
+    "infinite-scroll": "^4.0.1",
     "joy": "^0.1.1",
     "notiflix": "^3.2.4",
     "simplelightbox": "^2.10.2",
