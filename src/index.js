@@ -3,7 +3,7 @@ import '../src/css/search-field.css';
 import '../src/css/gallery.css';
 import '../src/css/load-button.css';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import '../src/js/infinity-scrol';
+import InfinitiScroll from 'infinite-scroll';
 import SimpleLightbox from 'simplelightbox';
 import GalleryApi from '../src/js/gallery-img';
 import LoadBtn from'../src/js/load-button';
