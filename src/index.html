@@ -14,24 +14,21 @@
 
 <body>
   <header class="page-header">
-    <form class="search-form" id="search-form">
-      <input class="search-form__input" type="text" name="searchQuery" autocomplete="off"
-        placeholder="Search images..." />
-      <button class="search-form__button" type="submit">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+  <form class="search-form" id="search-form">
+  <input class="search-form__input" type="text" name="searchQuery" autocomplete="off" placeholder="Search images..." />
+  <button class="search-form__button" type="submit">
+  <i class="fa fa-search" aria-hidden="true"></i></button>
+  </form>
   </header>
-
   <main class="main-content">
     <section class="section">
-      <div class="container">
+
         <div class="gallery"></div>
         <button type="button" class="btn btn-primary button load-more" data-action="load-more">
           <span class="spinner-border spinner-border-sm spinner is-hidden" role="status" aria-hidden="true"></span>
           <span class="label">Load more</span>
         </button>
-      </div>
+      
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
