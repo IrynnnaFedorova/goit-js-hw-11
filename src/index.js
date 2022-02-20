@@ -3,7 +3,6 @@ import '../src/css/search-field.css';
 import '../src/css/gallery.css';
 import '../src/css/load-button.css';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import InfinitiScroll from 'infinite-scroll';
 import SimpleLightbox from 'simplelightbox';
 import GalleryApi from '../src/js/gallery-img';
 import LoadBtn from'../src/js/load-button';
@@ -168,3 +167,18 @@ function smoothScroll() {
     }
 }
 
+/*const onEntry = entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            console.log('pora gryzit eshe')
+        }
+    })
+};
+const Option = {};
+const observer = new IntersectionObserver(onEntry, Option);
+observer.observe( refs.sentinel)*
+
+
+const observer = new IntersectionObserver(callbak, Option);
+const sentinel = document.querySelector('#sentinel');
+observer.observe(sentinel);*/
