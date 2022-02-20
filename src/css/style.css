@@ -48,7 +48,3 @@ img.loaded {
 button:focus {
   outline: none;
 }
-.container {
-  display: flex;
-  flex-wrap: wrap;
-}
